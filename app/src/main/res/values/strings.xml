@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Vidya</string>
+    <string name="button_addVidya">Add Game</string>
+    <string name="hint_vidyaTitle">Game Title</string>
+    <string name="hint_vidyaDescription">Description </string>
+    <string name="menu_addVidya">Add</string>
+    <string name="menu_cancelVidya">Cancel</string>
+</resources>
