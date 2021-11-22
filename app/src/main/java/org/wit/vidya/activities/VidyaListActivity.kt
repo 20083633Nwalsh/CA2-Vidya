@@ -8,11 +8,13 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.vidya.R
 import org.wit.vidya.adapters.VidyaAdapter
+import org.wit.vidya.adapters.VidyaListener
 import org.wit.vidya.databinding.ActivityVidyaListBinding
 import org.wit.vidya.main.MainApp
+import org.wit.vidya.models.VidyaModel
 
 
-class VidyaListActivity : AppCompatActivity() {
+class VidyaListActivity : AppCompatActivity(), VidyaListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityVidyaListBinding
@@ -29,7 +31,9 @@ class VidyaListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = VidyaAdapter(app.games)
+        //binding.recyclerView.adapter = VidyaAdapter(app.games)
+        binding.recyclerView.adapter = VidyaAdapter(app.games.findAll(),this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -45,5 +49,11 @@ class VidyaListActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onVidyaClick(vidya: VidyaModel) {
+        val launcherIntent = Intent(this, VidyaActivity::class.java)
+        launcherIntent.putExtra("vidya_edit", vidya)
+        startActivityForResult(launcherIntent,0)
     }
 }

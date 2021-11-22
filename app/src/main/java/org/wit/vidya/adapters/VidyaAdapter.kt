@@ -6,18 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import org.wit.vidya.databinding.CardVidyaBinding
 import org.wit.vidya.models.VidyaModel
 
-class VidyaAdapter constructor(private var games: List<VidyaModel>) :
+interface VidyaListener {
+    fun onVidyaClick(vidya: VidyaModel)
+}
+
+class VidyaAdapter constructor(private var games: List<VidyaModel>,
+                                   private val listener: VidyaListener) :
     RecyclerView.Adapter<VidyaAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardVidyaBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
+
         return MainHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val vidya = games[holder.adapterPosition]
-        holder.bind(vidya)
+        holder.bind(vidya, listener)
     }
 
     override fun getItemCount(): Int = games.size
@@ -25,9 +31,10 @@ class VidyaAdapter constructor(private var games: List<VidyaModel>) :
     class MainHolder(private val binding : CardVidyaBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(vidya: VidyaModel) {
+        fun bind(vidya: VidyaModel, listener: VidyaListener) {
             binding.vidyaTitle.text = vidya.title
             binding.description.text = vidya.description
+            binding.root.setOnClickListener { listener.onVidyaClick(vidya) }
         }
     }
 }

@@ -33,20 +33,22 @@ class VidyaActivity : AppCompatActivity() {
         app = application as MainApp
         i("Vidya Activity started...")
 
+        if (intent.hasExtra("vidya_edit")) {
+            vidya = intent.extras?.getParcelable("vidya_edit")!!
+            binding.vidyaTitle.setText(vidya.title)
+            binding.description.setText(vidya.description)
+        }
+
         binding.btnAdd.setOnClickListener() {
             vidya.title = binding.vidyaTitle.text.toString()
             vidya.description = binding.description.text.toString()
             if (vidya.title.isNotEmpty()) {
-
-                app.games.add(vidya.copy())
-                i("add Button Pressed: ${vidya}")
-                for (i in app.games.indices) {
-                    i("Vidya[$i]:${this.app.games[i]}")
-                }
+                app.games.create(vidya.copy())
+                setResult(RESULT_OK)
+                finish()
             }
             else {
-                Snackbar
-                    .make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+                Snackbar.make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
                     .show()
             }
         }
