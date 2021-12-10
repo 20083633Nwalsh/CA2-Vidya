@@ -20,39 +20,50 @@ class VidyaActivity : AppCompatActivity() {
     //val games = ArrayList<VidyaModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        var edit = false
+
         binding = ActivityVidyaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
 
-        var app : MainApp? = null
+        // var app : MainApp? = null
 
         //Timber.plant(Timber.DebugTree())
         app = application as MainApp
         i("Vidya Activity started...")
 
         if (intent.hasExtra("vidya_edit")) {
+            edit = true
             vidya = intent.extras?.getParcelable("vidya_edit")!!
             binding.vidyaTitle.setText(vidya.title)
             binding.description.setText(vidya.description)
+            binding.btnAdd.setText(R.string.save_vidya)
         }
 
         binding.btnAdd.setOnClickListener() {
             vidya.title = binding.vidyaTitle.text.toString()
             vidya.description = binding.description.text.toString()
             if (vidya.title.isNotEmpty()) {
-                app.games.create(vidya.copy())
-                setResult(RESULT_OK)
-                finish()
-            }
-            else {
-                Snackbar.make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+                Snackbar.make(it,R.string.enter_vidya_title, Snackbar.LENGTH_LONG)
                     .show()
             }
+            else {
+                if (edit) {
+                    app.games.update(vidya.copy())
+                } else {
+                    app.games.create(vidya.copy())
+                }
+            }
+            i("add Button pressed: $vidya")
+            setResult(RESULT_OK)
+            finish()
+            }
         }
-    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_vidya, menu)
         return super.onCreateOptionsMenu(menu)

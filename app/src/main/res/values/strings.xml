@@ -5,4 +5,6 @@
     <string name="hint_vidyaDescription">Description </string>
     <string name="menu_addVidya">Add</string>
     <string name="menu_cancelVidya">Cancel</string>
+    <string name="enter_vidya_title"> Please enter Game Title </string>
+    <string name="save_vidya"> Save Game </string>
 </resources>

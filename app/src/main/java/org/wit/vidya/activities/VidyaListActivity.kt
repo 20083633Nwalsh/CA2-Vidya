@@ -9,10 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.vidya.R
 import org.wit.vidya.adapters.VidyaAdapter
 import org.wit.vidya.adapters.VidyaListener
-import org.wit.vidya.databinding.ActivityVidyaListBinding
 import org.wit.vidya.main.MainApp
 import org.wit.vidya.models.VidyaModel
-
+import org.wit.vidya.databinding.ActivityVidyaListBinding
 
 class VidyaListActivity : AppCompatActivity(), VidyaListener {
 
@@ -42,8 +41,10 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        timber.log.Timber.i("menu triggered")
         when (item.itemId) {
-            R.id.item_add -> {
+            R.id.item_addgame -> {
+                timber.log.Timber.i("clicked add")
                 val launcherIntent = Intent(this, VidyaActivity::class.java)
                 startActivityForResult(launcherIntent,0)
             }
@@ -55,5 +56,10 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
         val launcherIntent = Intent(this, VidyaActivity::class.java)
         launcherIntent.putExtra("vidya_edit", vidya)
         startActivityForResult(launcherIntent,0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
