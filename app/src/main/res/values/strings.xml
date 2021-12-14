@@ -7,4 +7,9 @@
     <string name="menu_cancelVidya">Cancel</string>
     <string name="enter_vidya_title"> Please enter Game Title </string>
     <string name="save_vidya"> Save Game </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_vidya_image">Select Game Art</string>
+    <string name="change_vidya_image">Change Game image</string>
+    <string name="button_location">Where Was the Game Developed</string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

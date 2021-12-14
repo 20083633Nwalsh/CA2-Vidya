@@ -3,6 +3,7 @@ package org.wit.vidya.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.wit.vidya.databinding.CardVidyaBinding
 import org.wit.vidya.models.VidyaModel
 
@@ -34,6 +35,7 @@ class VidyaAdapter constructor(private var games: List<VidyaModel>,
         fun bind(vidya: VidyaModel, listener: VidyaListener) {
             binding.vidyaTitle.text = vidya.title
             binding.description.text = vidya.description
+            Picasso.get().load(vidya.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onVidyaClick(vidya) }
         }
     }
