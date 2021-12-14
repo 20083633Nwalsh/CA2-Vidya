@@ -46,7 +46,7 @@
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="Vidya Title"
+                    android:hint="Game Title"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -75,7 +75,7 @@
                     android:background="@color/colorAccent"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:text="@string/button_addImage"
+                    android:text="Add Game Art"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 

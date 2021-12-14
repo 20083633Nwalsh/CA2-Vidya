@@ -12,4 +12,5 @@
     <string name="change_vidya_image">Change Game image</string>
     <string name="button_location">Where Was the Game Developed</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="menu_deleteVidya">Remove Game</string>
 </resources>

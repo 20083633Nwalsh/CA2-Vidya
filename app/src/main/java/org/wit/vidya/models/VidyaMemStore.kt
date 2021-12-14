@@ -35,6 +35,10 @@ class VidyaMemStore : VidyaStore {
         }
     }
 
+    override fun delete(vidya: VidyaModel) {
+        games.remove(vidya)
+    }
+
     fun logAll() {
         games.forEach{ i("${it}") }
     }

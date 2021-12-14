@@ -35,7 +35,8 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         //binding.recyclerView.adapter = VidyaAdapter(app.games)
-        binding.recyclerView.adapter = VidyaAdapter(app.games.findAll(),this)
+      //  binding.recyclerView.adapter = VidyaAdapter(app.games.findAll(),this)
+        loadGames()
 
         registerRefreshCallback()
 
@@ -63,15 +64,19 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
         launcherIntent.putExtra("vidya_edit", vidya)
         refreshIntentLauncher.launch(launcherIntent)
     }
-/*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        binding.recyclerView.adapter?.notifyDataSetChanged()
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-*/
+
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { binding.recyclerView.adapter?.notifyDataSetChanged() }
+            { loadGames() }
+    }
+
+    private fun loadGames() {
+        showGames(app.games.findAll())
+    }
+
+    fun showGames (games: List<VidyaModel>) {
+        binding.recyclerView.adapter = VidyaAdapter(games, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 }
