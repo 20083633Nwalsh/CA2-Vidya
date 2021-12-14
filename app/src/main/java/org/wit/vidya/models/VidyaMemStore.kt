@@ -28,6 +28,9 @@ class VidyaMemStore : VidyaStore {
             foundVidya.title = vidya.title
             foundVidya.description = vidya.description
             foundVidya.image = vidya.image
+            foundVidya.lat = vidya.lat
+            foundVidya.lng = vidya.lng
+            foundVidya.zoom = vidya.zoom
             logAll()
         }
     }
