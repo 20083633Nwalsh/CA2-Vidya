@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -42,9 +43,6 @@ class VidyaActivity : AppCompatActivity() {
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
 
-        // var app : MainApp? = null
-
-        //Timber.plant(Timber.DebugTree())
         app = application as MainApp
         i("Vidya Activity started...")
 
@@ -53,6 +51,9 @@ class VidyaActivity : AppCompatActivity() {
             vidya = intent.extras?.getParcelable("vidya_edit")!!
             binding.vidyaTitle.setText(vidya.title)
             binding.description.setText(vidya.description)
+
+            binding.vidyaYear.setText(vidya.year.toString())
+
             binding.btnAdd.setText(R.string.save_vidya)
             Picasso.get()
                 .load(vidya.image)
@@ -66,6 +67,9 @@ class VidyaActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             vidya.title = binding.vidyaTitle.text.toString()
             vidya.description = binding.description.text.toString()
+
+            vidya.year = binding.vidyaYear.text.toString().toInt()
+
             if (vidya.title.isEmpty()) {
                 Snackbar.make(it,R.string.enter_vidya_title, Snackbar.LENGTH_LONG)
                     .show()
@@ -95,14 +99,7 @@ class VidyaActivity : AppCompatActivity() {
             val launcherIntent = Intent(this, MapActivity::class.java)
             mapIntentLauncher.launch(launcherIntent)
         }
-/*
-        binding.vidyaLocation.setOnClickListener {
-            val location = Location(52.245696, -7.139102, 15f)
-            val launcherIntent = Intent(this, MapActivity::class.java)
-                .putExtra("location", location)
-            mapIntentLauncher.launch(launcherIntent)
-        }
-*/
+
         binding.vidyaLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (vidya.zoom != 0f) {
@@ -114,6 +111,8 @@ class VidyaActivity : AppCompatActivity() {
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
+
+
 
         registerImagePickerCallback()
         registerMapCallback()
@@ -176,5 +175,6 @@ class VidyaActivity : AppCompatActivity() {
                 }
             }
     }
+
 
 }

@@ -34,9 +34,9 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        //binding.recyclerView.adapter = VidyaAdapter(app.games)
-      //  binding.recyclerView.adapter = VidyaAdapter(app.games.findAll(),this)
         loadGames()
+
+
 
         registerRefreshCallback()
 
@@ -79,4 +79,6 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
         binding.recyclerView.adapter = VidyaAdapter(games, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()
     }
+
+
 }

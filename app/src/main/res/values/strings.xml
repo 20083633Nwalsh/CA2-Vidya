@@ -13,4 +13,6 @@
     <string name="button_location">Where Was the Game Developed</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="menu_deleteVidya">Remove Game</string>
+    <string name="hint_vidyaYear">Year Game Was Released</string>
+    <string name="enter_vidyaYear">Enter Year Game Was Released</string>
 </resources>

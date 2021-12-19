@@ -35,6 +35,7 @@ class VidyaAdapter constructor(private var games: List<VidyaModel>,
         fun bind(vidya: VidyaModel, listener: VidyaListener) {
             binding.vidyaTitle.text = vidya.title
             binding.description.text = vidya.description
+            binding.vidyaYear.text = vidya.year.toString()
             Picasso.get().load(vidya.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onVidyaClick(vidya) }
         }

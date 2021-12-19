@@ -27,6 +27,7 @@ class VidyaMemStore : VidyaStore {
         if (foundVidya != null) {
             foundVidya.title = vidya.title
             foundVidya.description = vidya.description
+            foundVidya.year = vidya.year
             foundVidya.image = vidya.image
             foundVidya.lat = vidya.lat
             foundVidya.lng = vidya.lng
