@@ -5,12 +5,12 @@
     <item
         android:id="@+id/item_map"
         android:icon="@android:drawable/ic_menu_mapmode"
-        android:title="@string/menu_addVidya"
+        android:title="@string/menu_addMusicka"
         app:showAsAction="always"/> -->
 
     <item
         android:id="@+id/item_addgame"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="@string/menu_addVidya"
+        android:title="@string/menu_addMusicka"
         app:showAsAction="always" />
 </menu>

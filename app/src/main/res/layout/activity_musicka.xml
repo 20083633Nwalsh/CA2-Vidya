@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.vidya.activities.VidyaActivity">
+    tools:context="musicka.activities.MusickaActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,12 +41,12 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/vidyaTitle"
+                    android:id="@+id/musickaTitle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="Game Title"
+                    android:hint="Song Title"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:hint="@string/hint_vidyaDescription"
+                    android:hint="@string/hint_musickaDescription"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -68,11 +68,11 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/vidyaYear"
+                    android:id="@+id/musickaYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:hint="@string/hint_vidyaYear"
+                    android:hint="@string/hint_musickaYear"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -89,18 +89,18 @@
                     android:background="@color/colorAccent"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:text="Add Game Art"
+                    android:text="Add Album Art"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
                 <ImageView
-                    android:id="@+id/vidyaImage"
+                    android:id="@+id/musickaImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <Button
-                    android:id="@+id/vidyaLocation"
+                    android:id="@+id/musickaLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -123,7 +123,7 @@
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
-                    android:text="@string/button_addVidya"
+                    android:text="@string/button_addMusicka"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
             </LinearLayout>

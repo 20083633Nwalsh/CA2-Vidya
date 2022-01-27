@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/musicka/app/src/main/res/layout/activity_map.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/musicka/app/src/main/res/layout/activity_musicka.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/musicka/app/src/main/res/layout/activity_musicka_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/musicka/app/src/main/res/layout/card_musicka.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/musicka/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/musicka/app/src/main/res/menu/menu_musicka.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/vidya/app/src/main/res/layout/activity_map.xml" value="0.23229166666666667" />
         <entry key="..\:/AndroidStudioProjects/vidya/app/src/main/res/layout/activity_vidya.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/vidya/app/src/main/res/layout/activity_vidya_list.xml" value="0.36666666666666664" />

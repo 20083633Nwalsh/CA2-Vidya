@@ -1,4 +1,4 @@
-package org.wit.vidya.activities
+package org.wit.musicka.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,23 +8,23 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.wit.vidya.R
-import org.wit.vidya.adapters.VidyaAdapter
-import org.wit.vidya.adapters.VidyaListener
-import org.wit.vidya.main.MainApp
-import org.wit.vidya.models.VidyaModel
-import org.wit.vidya.databinding.ActivityVidyaListBinding
+import org.wit.musicka.R
+import org.wit.musicka.adapters.MusickaAdapter
+import org.wit.musicka.adapters.MusickaListener
+import org.wit.musicka.databinding.ActivityMusickaListBinding
+import org.wit.musicka.main.MainApp
+import org.wit.musicka.models.MusickaModel
 
-class VidyaListActivity : AppCompatActivity(), VidyaListener {
+class MusickaListActivity : AppCompatActivity(), MusickaListener {
 
     lateinit var app: MainApp
-    private lateinit var binding: ActivityVidyaListBinding
+    private lateinit var binding: ActivityMusickaListBinding
 
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityVidyaListBinding.inflate(layoutInflater)
+        binding = ActivityMusickaListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.toolbar.title = title
@@ -52,16 +52,16 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
         when (item.itemId) {
             R.id.item_addgame -> {
                 timber.log.Timber.i("clicked add")
-                val launcherIntent = Intent(this, VidyaActivity::class.java)
+                val launcherIntent = Intent(this, MusickaActivity::class.java)
                 refreshIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onVidyaClick(vidya: VidyaModel) {
-        val launcherIntent = Intent(this, VidyaActivity::class.java)
-        launcherIntent.putExtra("vidya_edit", vidya)
+    override fun onMusickaClick(musicka: MusickaModel) {
+        val launcherIntent = Intent(this, MusickaActivity::class.java)
+        launcherIntent.putExtra("musicka_edit", musicka)
         refreshIntentLauncher.launch(launcherIntent)
     }
 
@@ -75,8 +75,8 @@ class VidyaListActivity : AppCompatActivity(), VidyaListener {
         showGames(app.games.findAll())
     }
 
-    fun showGames (games: List<VidyaModel>) {
-        binding.recyclerView.adapter = VidyaAdapter(games, this)
+    fun showGames (games: List<MusickaModel>) {
+        binding.recyclerView.adapter = MusickaAdapter(games, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 

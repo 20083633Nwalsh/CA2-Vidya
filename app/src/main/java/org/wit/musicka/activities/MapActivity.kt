@@ -1,4 +1,4 @@
-package org.wit.vidya.activities
+package org.wit.musicka.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -12,9 +12,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import org.wit.vidya.R
-import org.wit.vidya.databinding.ActivityMapBinding
-import org.wit.vidya.models.Location
+import org.wit.musicka.R
+
+import org.wit.musicka.models.Location
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMarkerDragListener,
