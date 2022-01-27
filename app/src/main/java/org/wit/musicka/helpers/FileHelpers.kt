@@ -1,4 +1,4 @@
-package org.wit.vidya.helpers
+package org.wit.musicka.helpers
 
 import android.content.Context
 import timber.log.Timber.e

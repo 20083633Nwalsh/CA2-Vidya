@@ -5,13 +5,13 @@
     <item
         android:id="@+id/item_delete"
         android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/menu_deleteVidya"
+        android:title="@string/menu_deleteMusicka"
         android:visible="true"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/item_cancel"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
-        android:title="@string/menu_cancelVidya"
+        android:title="@string/menu_cancelMusicka"
         app:showAsAction="always" />
 </menu>

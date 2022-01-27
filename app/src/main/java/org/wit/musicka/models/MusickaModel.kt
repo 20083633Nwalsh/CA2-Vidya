@@ -1,11 +1,11 @@
-package org.wit.vidya.models
+package org.wit.musicka.models
 
 import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class VidyaModel(var id: Long = 0,
+data class MusickaModel(var id: Long = 0,
                           var title: String = "",
                           var description: String = "",
                         var year: Int = 0,

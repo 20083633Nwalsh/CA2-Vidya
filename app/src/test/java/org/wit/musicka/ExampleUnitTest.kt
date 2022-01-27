@@ -1,4 +1,4 @@
-package org.wit.vidya
+package org.wit.musicka
 
 import org.junit.Test
 

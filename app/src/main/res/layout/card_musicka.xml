@@ -20,14 +20,14 @@
             android:layout_height="64dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:contentDescription="@string/change_vidya_image"
+            android:contentDescription="@string/change_musicka_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/vidyaTitle"
+            android:id="@+id/musickaTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -48,8 +48,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.052"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@id/vidyaTitle"
+            app:layout_constraintTop_toBottomOf="@id/musickaTitle"
             tools:text="A Description" />
+
+        <TextView
+            android:id="@+id/musickaYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.039"
+            app:layout_constraintStart_toEndOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            tools:text="Year" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

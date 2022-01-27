@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">Vidya</string>
-    <string name="button_addVidya">Add Game</string>
-    <string name="hint_vidyaTitle">Game Title</string>
-    <string name="hint_vidyaDescription">Description </string>
-    <string name="menu_addVidya">Add</string>
-    <string name="menu_cancelVidya">Cancel</string>
-    <string name="enter_vidya_title"> Please enter Game Title </string>
-    <string name="save_vidya"> Save Game </string>
-    <string name="button_addImage"> Add Image </string>
-    <string name="select_vidya_image">Select Game Art</string>
-    <string name="change_vidya_image">Change Game image</string>
-    <string name="button_location">Where Was the Game Developed</string>
+    <string name="app_name">Musicka</string>
+    <string name="button_addMusicka">Add Song</string>
+    <string name="hint_musickaTitle">Song Title</string>
+    <string name="hint_musickaDescription">Description </string>
+    <string name="menu_addMusicka">Add</string>
+    <string name="menu_cancelMusicka">Cancel</string>
+    <string name="enter_musicka_title"> Please enter Song Title </string>
+    <string name="save_musicka"> Save Song </string>
+    <string name="button_addImage"> Add Album Image </string>
+    <string name="select_musicka_image">Select Album Art</string>
+    <string name="change_musicka_image">Change Album image</string>
+    <string name="button_location">Where Did You Hear The Song</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="menu_deleteVidya">Remove Game</string>
+    <string name="menu_deleteMusicka">Remove Song</string>
+    <string name="hint_musickaYear">Year Song Was Released</string>
+    <string name="enter_musickaYear">Enter Year Song Was Released</string>
 </resources>

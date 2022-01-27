@@ -1,10 +1,10 @@
-package org.wit.vidya.models
+package org.wit.musicka.models
 
 import android.content.Context
 import android.net.Uri
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
-import org.wit.vidya.helpers.*
+import org.wit.musicka.helpers.*
 import timber.log.Timber
 import java.lang.reflect.Type
 import java.util.*
@@ -13,15 +13,15 @@ const val JSON_FILE = "games.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()
-val listType: Type = object : TypeToken<ArrayList<VidyaModel>>() {}.type
+val listType: Type = object : TypeToken<ArrayList<MusickaModel>>() {}.type
 
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class VidyaJSONStore(private val context: Context) : VidyaStore {
+class MusickaJSONStore(private val context: Context) : MusickaStore {
 
-    var games = mutableListOf<VidyaModel>()
+    var games = mutableListOf<MusickaModel>()
 
     init {
         if (exists(context, JSON_FILE)) {
@@ -29,33 +29,34 @@ class VidyaJSONStore(private val context: Context) : VidyaStore {
         }
     }
 
-    override fun findAll(): MutableList<VidyaModel> {
+    override fun findAll(): MutableList<MusickaModel> {
         logAll()
         return games
     }
 
-    override fun create(vidya: VidyaModel) {
-        vidya.id = generateRandomId()
-        games.add(vidya)
+    override fun create(musicka: MusickaModel) {
+        musicka.id = generateRandomId()
+        games.add(musicka)
         serialize()
     }
 
 
-    override fun update(vidya: VidyaModel) {
-        var foundVidya: VidyaModel? = games.find { p -> p.id == vidya.id }
-        if (foundVidya != null) {
-            foundVidya.title = vidya.title
-            foundVidya.description = vidya.description
-            foundVidya.image = vidya.image
-            foundVidya.lat = vidya.lat
-            foundVidya.lng = vidya.lng
-            foundVidya.zoom = vidya.zoom
+    override fun update(musicka: MusickaModel) {
+        var foundMusicka: MusickaModel? = games.find { p -> p.id == musicka.id }
+        if (foundMusicka != null) {
+            foundMusicka.title = musicka.title
+            foundMusicka.description = musicka.description
+            foundMusicka.year = musicka.year
+            foundMusicka.image = musicka.image
+            foundMusicka.lat = musicka.lat
+            foundMusicka.lng = musicka.lng
+            foundMusicka.zoom = musicka.zoom
             logAll()
         }
     }
 
-    override fun delete(vidya: VidyaModel) {
-        games.remove(vidya)
+    override fun delete(musicka: MusickaModel) {
+        games.remove(musicka)
         serialize()
     }
 

@@ -1,4 +1,4 @@
-package org.wit.vidya.activities
+package org.wit.musicka.activities
 
 import android.content.Intent
 import android.net.Uri
@@ -10,24 +10,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
-import org.wit.vidya.R
-import org.wit.vidya.databinding.ActivityVidyaBinding
-import org.wit.vidya.helpers.showImagePicker
-import org.wit.vidya.main.MainApp
-import org.wit.vidya.models.Location
-import org.wit.vidya.models.VidyaModel
-import timber.log.Timber
+import org.wit.musicka.R
+import org.wit.musicka.databinding.ActivityMusickaBinding
+import org.wit.musicka.helpers.showImagePicker
+import org.wit.musicka.main.MainApp
+import org.wit.musicka.models.Location
+import org.wit.musicka.models.MusickaModel
 import timber.log.Timber.i
 
 
-class VidyaActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityVidyaBinding
+class MusickaActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMusickaBinding
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
-    var vidya = VidyaModel()
+    var musicka = MusickaModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
-    //val games = ArrayList<VidyaModel>()
+    //val games = ArrayList<MusickaModel>()
 
    // var location = Location(52.245696, -7.139102, 15f)
 
@@ -36,48 +35,51 @@ class VidyaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var edit = false
 
-        binding = ActivityVidyaBinding.inflate(layoutInflater)
+        binding = ActivityMusickaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
 
-        // var app : MainApp? = null
-
-        //Timber.plant(Timber.DebugTree())
         app = application as MainApp
-        i("Vidya Activity started...")
+        i("Musicka Activity started...")
 
-        if (intent.hasExtra("vidya_edit")) {
+        if (intent.hasExtra("musicka_edit")) {
             edit = true
-            vidya = intent.extras?.getParcelable("vidya_edit")!!
-            binding.vidyaTitle.setText(vidya.title)
-            binding.description.setText(vidya.description)
-            binding.btnAdd.setText(R.string.save_vidya)
+            musicka = intent.extras?.getParcelable("musicka_edit")!!
+            binding.musickaTitle.setText(musicka.title)
+            binding.description.setText(musicka.description)
+
+            binding.musickaYear.setText(musicka.year.toString())
+
+            binding.btnAdd.setText(R.string.save_musicka)
             Picasso.get()
-                .load(vidya.image)
-                .into(binding.vidyaImage)
-            if (vidya.image != Uri.EMPTY) {
-                binding.chooseImage.setText(R.string.change_vidya_image)
+                .load(musicka.image)
+                .into(binding.musickaImage)
+            if (musicka.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_musicka_image)
             }
 
         }
 
         binding.btnAdd.setOnClickListener() {
-            vidya.title = binding.vidyaTitle.text.toString()
-            vidya.description = binding.description.text.toString()
-            if (vidya.title.isEmpty()) {
-                Snackbar.make(it,R.string.enter_vidya_title, Snackbar.LENGTH_LONG)
+            musicka.title = binding.musickaTitle.text.toString()
+            musicka.description = binding.description.text.toString()
+
+            musicka.year = binding.musickaYear.text.toString().toInt()
+
+            if (musicka.title.isEmpty()) {
+                Snackbar.make(it,R.string.enter_musicka_title, Snackbar.LENGTH_LONG)
                     .show()
             }
             else {
                 if (edit) {
-                    app.games.update(vidya.copy())
+                    app.games.update(musicka.copy())
                 } else {
-                    app.games.create(vidya.copy())
+                    app.games.create(musicka.copy())
                 }
             }
-            i("add Button pressed: $vidya")
+            i("add Button pressed: $musicka")
             setResult(RESULT_OK)
             finish()
             }
@@ -87,47 +89,42 @@ class VidyaActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
 
-        binding.vidyaLocation.setOnClickListener {
+        binding.musickaLocation.setOnClickListener {
             i ("Set Location Pressed")
         }
 
-        binding.vidyaLocation.setOnClickListener {
+        binding.musickaLocation.setOnClickListener {
             val launcherIntent = Intent(this, MapActivity::class.java)
             mapIntentLauncher.launch(launcherIntent)
         }
-/*
-        binding.vidyaLocation.setOnClickListener {
+
+        binding.musickaLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
-            val launcherIntent = Intent(this, MapActivity::class.java)
-                .putExtra("location", location)
-            mapIntentLauncher.launch(launcherIntent)
-        }
-*/
-        binding.vidyaLocation.setOnClickListener {
-            val location = Location(52.245696, -7.139102, 15f)
-            if (vidya.zoom != 0f) {
-                location.lat =  vidya.lat
-                location.lng = vidya.lng
-                location.zoom = vidya.zoom
+            if (musicka.zoom != 0f) {
+                location.lat =  musicka.lat
+                location.lng = musicka.lng
+                location.zoom = musicka.zoom
             }
             val launcherIntent = Intent(this, MapActivity::class.java)
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
 
+
+
         registerImagePickerCallback()
         registerMapCallback()
         }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_vidya, menu)
+        menuInflater.inflate(R.menu.menu_musicka, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_delete -> {
-                app.games.delete(vidya)
+                app.games.delete(musicka)
                 finish()
             }
             R.id.item_cancel -> {
@@ -145,11 +142,11 @@ class VidyaActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            vidya.image = result.data!!.data!!
+                            musicka.image = result.data!!.data!!
                             Picasso.get()
-                                .load(vidya.image)
-                                .into(binding.vidyaImage)
-                            binding.chooseImage.setText(R.string.change_vidya_image)
+                                .load(musicka.image)
+                                .into(binding.musickaImage)
+                            binding.chooseImage.setText(R.string.change_musicka_image)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }
@@ -167,14 +164,15 @@ class VidyaActivity : AppCompatActivity() {
                             i("Got Location ${result.data.toString()}")
                             val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
-                            vidya.lat = location.lat
-                            vidya.lng = location.lng
-                            vidya.zoom = location.zoom
+                            musicka.lat = location.lat
+                            musicka.lng = location.lng
+                            musicka.zoom = location.zoom
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }
                 }
             }
     }
+
 
 }
