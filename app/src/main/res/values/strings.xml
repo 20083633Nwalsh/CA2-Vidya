@@ -15,4 +15,7 @@
     <string name="menu_deleteMusicka">Remove Song</string>
     <string name="hint_musickaYear">Year Song Was Released</string>
     <string name="enter_musickaYear">Enter Year Song Was Released</string>
+    <string name="action_report">Action Report</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
