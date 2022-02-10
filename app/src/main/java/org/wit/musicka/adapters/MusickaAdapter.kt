@@ -11,7 +11,7 @@ interface MusickaListener {
     fun onMusickaClick(musicka: MusickaModel)
 }
 
-class MusickaAdapter constructor(private var games: List<MusickaModel>,
+class MusickaAdapter constructor(private var songs: List<MusickaModel>,
                                    private val listener: MusickaListener) :
     RecyclerView.Adapter<MusickaAdapter.MainHolder>() {
 
@@ -23,11 +23,11 @@ class MusickaAdapter constructor(private var games: List<MusickaModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val musicka = games[holder.adapterPosition]
+        val musicka = songs[holder.adapterPosition]
         holder.bind(musicka, listener)
     }
 
-    override fun getItemCount(): Int = games.size
+    override fun getItemCount(): Int = songs.size
 
     class MainHolder(private val binding : CardMusickaBinding) :
         RecyclerView.ViewHolder(binding.root) {

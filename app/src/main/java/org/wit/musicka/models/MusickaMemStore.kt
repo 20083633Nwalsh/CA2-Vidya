@@ -10,20 +10,20 @@ internal fun getId(): Long {
 
 class MusickaMemStore : MusickaStore {
 
-    val games = ArrayList<MusickaModel>()
+    val songs = ArrayList<MusickaModel>()
 
     override fun findAll(): List<MusickaModel> {
-        return games
+        return songs
     }
 
     override fun create(musicka: MusickaModel) {
         musicka.id = getId()
-        games.add(musicka)
+        songs.add(musicka)
         logAll()
     }
 
     override fun update(musicka: MusickaModel) {
-        var foundMusicka: MusickaModel? = games.find { p -> p.id == musicka.id }
+        var foundMusicka: MusickaModel? = songs.find { p -> p.id == musicka.id }
         if (foundMusicka != null) {
             foundMusicka.title = musicka.title
             foundMusicka.description = musicka.description
@@ -37,10 +37,10 @@ class MusickaMemStore : MusickaStore {
     }
 
     override fun delete(musicka: MusickaModel) {
-        games.remove(musicka)
+        songs.remove(musicka)
     }
 
     fun logAll() {
-        games.forEach{ i("${it}") }
+        songs.forEach{ i("${it}") }
     }
 }

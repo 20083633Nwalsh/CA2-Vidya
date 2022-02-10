@@ -36,7 +36,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
         map = googleMap
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
-            .title("Game Developed")
+            .title("Song heard")
             .snippet("GPS : $loc")
             .draggable(true)
             .position(loc)

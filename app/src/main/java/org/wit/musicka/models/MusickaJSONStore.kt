@@ -9,7 +9,7 @@ import timber.log.Timber
 import java.lang.reflect.Type
 import java.util.*
 
-const val JSON_FILE = "games.json"
+const val JSON_FILE = "songs.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()
@@ -21,7 +21,7 @@ fun generateRandomId(): Long {
 
 class MusickaJSONStore(private val context: Context) : MusickaStore {
 
-    var games = mutableListOf<MusickaModel>()
+    var songs = mutableListOf<MusickaModel>()
 
     init {
         if (exists(context, JSON_FILE)) {
@@ -31,18 +31,18 @@ class MusickaJSONStore(private val context: Context) : MusickaStore {
 
     override fun findAll(): MutableList<MusickaModel> {
         logAll()
-        return games
+        return songs
     }
 
     override fun create(musicka: MusickaModel) {
         musicka.id = generateRandomId()
-        games.add(musicka)
+        songs.add(musicka)
         serialize()
     }
 
 
     override fun update(musicka: MusickaModel) {
-        var foundMusicka: MusickaModel? = games.find { p -> p.id == musicka.id }
+        var foundMusicka: MusickaModel? = songs.find { p -> p.id == musicka.id }
         if (foundMusicka != null) {
             foundMusicka.title = musicka.title
             foundMusicka.description = musicka.description
@@ -56,22 +56,22 @@ class MusickaJSONStore(private val context: Context) : MusickaStore {
     }
 
     override fun delete(musicka: MusickaModel) {
-        games.remove(musicka)
+        songs.remove(musicka)
         serialize()
     }
 
     private fun serialize() {
-        val jsonString = gsonBuilder.toJson(games, listType)
+        val jsonString = gsonBuilder.toJson(songs, listType)
         write(context, JSON_FILE, jsonString)
     }
 
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
-        games = gsonBuilder.fromJson(jsonString, listType)
+        songs = gsonBuilder.fromJson(jsonString, listType)
     }
 
     private fun logAll() {
-       games.forEach { Timber.i("$it") }
+       songs.forEach { Timber.i("$it") }
     }
 }
 
