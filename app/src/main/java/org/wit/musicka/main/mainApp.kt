@@ -8,14 +8,14 @@ import timber.log.Timber.i
 import org.wit.musicka.models.MusickaStore
 
 class MainApp : Application() {
-    lateinit var games: MusickaStore
-    //val games = ArrayList<MusickaModel>()
-  //  val games = MusickaMemStore()
+    lateinit var songs: MusickaStore
+    //val songs = ArrayList<MusickaModel>()
+  //  val songs = MusickaMemStore()
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        games = MusickaJSONStore(applicationContext)
+        songs = MusickaJSONStore(applicationContext)
         i("Musicka started")
     }
 }

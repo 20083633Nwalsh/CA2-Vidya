@@ -26,7 +26,7 @@ class MusickaActivity : AppCompatActivity() {
     var musicka = MusickaModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
-    //val games = ArrayList<MusickaModel>()
+    //val songs = ArrayList<MusickaModel>()
 
    // var location = Location(52.245696, -7.139102, 15f)
 
@@ -74,9 +74,9 @@ class MusickaActivity : AppCompatActivity() {
             }
             else {
                 if (edit) {
-                    app.games.update(musicka.copy())
+                    app.songs.update(musicka.copy())
                 } else {
-                    app.games.create(musicka.copy())
+                    app.songs.create(musicka.copy())
                 }
             }
             i("add Button pressed: $musicka")
@@ -124,7 +124,7 @@ class MusickaActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_delete -> {
-                app.games.delete(musicka)
+                app.songs.delete(musicka)
                 finish()
             }
             R.id.item_cancel -> {

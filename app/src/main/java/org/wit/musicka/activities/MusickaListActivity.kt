@@ -34,7 +34,7 @@ class MusickaListActivity : AppCompatActivity(), MusickaListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        loadGames()
+        loadSongs()
 
 
 
@@ -68,15 +68,15 @@ class MusickaListActivity : AppCompatActivity(), MusickaListener {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { loadGames() }
+            { loadSongs() }
     }
 
-    private fun loadGames() {
-        showGames(app.games.findAll())
+    private fun loadSongs() {
+        showSongs(app.songs.findAll())
     }
 
-    fun showGames (games: List<MusickaModel>) {
-        binding.recyclerView.adapter = MusickaAdapter(games, this)
+    fun showSongs (songs: List<MusickaModel>) {
+        binding.recyclerView.adapter = MusickaAdapter(songs, this)
         binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 
