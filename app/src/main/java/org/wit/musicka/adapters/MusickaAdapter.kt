@@ -4,16 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.wit.musicka.R
 import org.wit.musicka.databinding.CardMusickaBinding
 import org.wit.musicka.models.MusickaModel
+import org.wit.musicka.ui.musickaList.MusickaFragment
 
-interface MusickaListener {
-    fun onMusickaClick(musicka: MusickaModel)
+interface MusickaClickListener {
+    fun onMusickaClick(song: MusickaModel)
 }
 
 class MusickaAdapter constructor(private var songs: List<MusickaModel>,
-                                   private val listener: MusickaListener) :
-    RecyclerView.Adapter<MusickaAdapter.MainHolder>() {
+                                  private val listener: MusickaClickListener)
+    : RecyclerView.Adapter<MusickaAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardMusickaBinding
@@ -23,21 +25,19 @@ class MusickaAdapter constructor(private var songs: List<MusickaModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val musicka = songs[holder.adapterPosition]
-        holder.bind(musicka, listener)
+        val song = songs[holder.adapterPosition]
+        holder.bind(song,listener)
     }
 
     override fun getItemCount(): Int = songs.size
 
-    class MainHolder(private val binding : CardMusickaBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class MainHolder(val binding : CardMusickaBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(musicka: MusickaModel, listener: MusickaListener) {
-            binding.musickaTitle.text = musicka.title
-            binding.description.text = musicka.description
-            binding.musickaYear.text = musicka.year.toString()
-            Picasso.get().load(musicka.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener { listener.onMusickaClick(musicka) }
+        fun bind(song: MusickaModel, listener: MusickaClickListener) {
+            binding.song = song
+            binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            binding.root.setOnClickListener { listener.onMusickaClick(song) }
+            binding.executePendingBindings()
         }
     }
 }
