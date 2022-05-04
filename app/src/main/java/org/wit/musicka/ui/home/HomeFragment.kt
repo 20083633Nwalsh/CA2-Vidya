@@ -7,36 +7,47 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import org.wit.musicka.R
+import org.wit.musicka.adapter.MusickaAdapter
 import org.wit.musicka.databinding.FragmentHomeBinding
+import org.wit.musicka.main.MusickaApp
 
 class HomeFragment : Fragment() {
+    lateinit var app: MusickaApp
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _fragBinding: FragmentHomeBinding? = null
+    private val fragBinding get() = _fragBinding!!
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        app = activity?.application as MusickaApp
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    ): View? {
+        _fragBinding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root = fragBinding.root
+        activity?.title = "Home"
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-      //  val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-        //    textView.text = it
-        }
+        fragBinding.recyclerView.setLayoutManager(LinearLayoutManager(activity))
+        fragBinding.recyclerView.adapter = MusickaAdapter(app.musickaStore.findAll())
         return root
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+            HomeFragment().apply {
+                arguments = Bundle().apply { }
+            }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _fragBinding = null
     }
 }
