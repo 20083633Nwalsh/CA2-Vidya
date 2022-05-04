@@ -3,46 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_musicka">
+    app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_musicka"
-        android:name="org.wit.musicka.ui.musickaList.MusickaFragment"
-        android:label="Musicka"
-        tools:layout="@layout/fragment_musicka" >
+        android:id="@+id/nav_home"
+        android:name="org.wit.musicka.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_musicka_to_nav_song"
-            app:destination="@id/nav_song" />
-        <action
-            android:id="@+id/action_nav_musicka_to_musickaDetailFragment"
-            app:destination="@id/musickaDetailFragment" />
+            android:id="@+id/action_nav_home_to_nav_add"
+            app:destination="@id/nav_add" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_song"
-        android:name="org.wit.musicka.ui.song.SongFragment"
-        android:label="Add Song"
-        tools:layout="@layout/fragment_song" >
+        android:id="@+id/nav_add"
+        android:name="org.wit.musicka.ui.add.AddFragment"
+        android:label="@string/menu_add"
+        tools:layout="@layout/fragment_add" >
         <action
-            android:id="@+id/action_nav_song_to_nav_musicka"
-            app:destination="@id/nav_musicka" />
+            android:id="@+id/action_nav_gallery_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="org.wit.musicka.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
-        android:id="@+id/musickaDetailFragment"
-        android:name="org.wit.musicka.MusickaDetailFragment"
-        android:label="fragment_musicka_detail"
-        tools:layout="@layout/fragment_musicka_detail" >
-        <action
-            android:id="@+id/action_musickaDetailFragment_to_nav_musicka"
-            app:destination="@id/nav_musicka" />
-        <argument
-            android:name="musickaID"
-            app:argType="long" />
-    </fragment>
 </navigation>
