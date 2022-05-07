@@ -13,5 +13,11 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_add" />
 
+        <item
+            android:id="@+id/nav_delete"
+            android:icon="@android:drawable/btn_dialog"
+            android:title="@string/menu_delete" />
+
+
     </group>
 </menu>

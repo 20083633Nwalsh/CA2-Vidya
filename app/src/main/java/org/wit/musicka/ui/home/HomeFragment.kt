@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.musicka.R
 import org.wit.musicka.adapter.MusickaAdapter
+import org.wit.musicka.databinding.FragmentAddBinding
 import org.wit.musicka.databinding.FragmentHomeBinding
 import org.wit.musicka.main.MusickaApp
+import org.wit.musicka.models.MusickaModel
 
 class HomeFragment : Fragment() {
     lateinit var app: MusickaApp
@@ -38,6 +41,7 @@ class HomeFragment : Fragment() {
         return root
     }
 
+
     companion object {
         @JvmStatic
         fun newInstance() =
@@ -51,3 +55,5 @@ class HomeFragment : Fragment() {
         _fragBinding = null
     }
 }
+
+
