@@ -12,10 +12,23 @@
     <string name="change_musicka_image">Change Album image</string>
     <string name="button_location">Where Did You Hear The Song</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="menu_deleteMusicka">Remove Song</string>
+
     <string name="hint_musickaYear">Year Song Was Released</string>
     <string name="enter_musickaYear">Enter Year Song Was Released</string>
     <string name="action_report">Action Report</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>#
+
+    <string name="menu_home">Home</string>
+    <string name="menu_add">Add</string>
+    <string name="settings">Settings</string>
+    <string name="action_add">action add</string>
+
+    <string name="menu_delete">Delete</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_add">Add</string>
+    <string name="settings">Settings</string>
+    <string name="action_add">action add</string>
+
 </resources>

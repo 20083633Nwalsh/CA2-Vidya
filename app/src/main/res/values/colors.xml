@@ -9,7 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#8c02ff</color>
+
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorTextDark">#FFFFFF</color>
+    <color name="barsDark">#2b004f</color>
 
 </resources>

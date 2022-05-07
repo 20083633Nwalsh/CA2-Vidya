@@ -2,6 +2,7 @@ package org.wit.musicka.models
 
 import timber.log.Timber.i
 
+
 var lastId = 0L
 
 internal fun getId(): Long {

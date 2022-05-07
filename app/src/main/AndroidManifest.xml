@@ -2,39 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.wit.musicka">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
-        android:name=".main.MainApp"
+        android:name=".main.MusickaApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Musicka"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Musicka">
-
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
-
         <activity
-            android:name=".activities.MapActivity"
-            android:label="@string/title_activity_map" />
-        <activity
-            android:name=".activities.MusickaListActivity"
-            />
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Musicka.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".activities.MusickaActivity" />
-        <activity
-            android:name=".activities.SplashScreen"
-            android:theme="@style/Theme.Splash"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
-    </manifest>
+
+</manifest>
