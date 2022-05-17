@@ -47,7 +47,7 @@ class MusickaJSONStore(private val context: Context) : MusickaStore {
             foundMusicka.title = musicka.title
             foundMusicka.description = musicka.description
             foundMusicka.year = musicka.year
-         //   foundMusicka.image = musicka.image
+           // foundMusicka.image = musicka.image
           //  foundMusicka.lat = musicka.lat
          //  foundMusicka.lng = musicka.lng
             foundMusicka.zoom = musicka.zoom
