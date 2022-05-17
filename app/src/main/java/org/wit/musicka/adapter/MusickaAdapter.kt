@@ -30,10 +30,10 @@ class MusickaAdapter constructor(private var songs: List<MusickaModel>)
             binding.musickaTitle.text = song.title
             binding.description.text = song.description
             binding.musickaYear.text = song.year.toString()
-           // binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+          //  binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
 
 
-          //  Picasso.get().load(musicka.image).resize(200,200).into(binding.imageIcon)
+         //  Picasso.get().load(musickaImage).resize(200,200).into(binding.imageIcon)
 
         }
     }
